@@ -4,7 +4,7 @@
  * main - SIMPLE SHELL
  * @ac: argument count
  * @av: argument vector
- * Return: 0 success
+ * Return: returns 0 success
  */
 
 int main(int __attribute__ ((unused)) ac, char **av)

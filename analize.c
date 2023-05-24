@@ -3,7 +3,7 @@
 /**
  * analyze - This function runs thorough checks on
  * command input on the buffer
- * @buf: buffer
+ * @buf: repent the buffer
  * @count: count inputs
  * @av: argument vector
  */

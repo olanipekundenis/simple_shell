@@ -2,7 +2,7 @@
 
 /**
  * handler - handles ctrl + c signal
- * @sig: signal to handle
+ * @sig: represent signal to handle
  */
 
 void handler(int sig)

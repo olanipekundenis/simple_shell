@@ -29,7 +29,7 @@ void execute(char *path, char **args)
 /**
  * error_message - This function displays error essage
  * if command isn't able to run
- * @args: argument passed
+ * @args: repreesent argument passed
  * @count: count commands
  * @av: argument vector
  */

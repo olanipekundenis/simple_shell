@@ -16,7 +16,7 @@ int _putchar(char c)
 /**
  * _strlen - This function dispalys the length of
  * a string
- * @s: parameter given
+ * @s: The parameter given
  * Return: length;
  */
 

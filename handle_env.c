@@ -81,7 +81,7 @@ char *_strcpy(char *dest, char *src)
 }
 /**
  * _count - function to count a str
- * @s: str to count
+ * @s: represent str to count
  * Return: len of str (success)
  */
 
