@@ -51,12 +51,7 @@ void error_message(char **args, int count, char **av)
 	}
 	while (len > 1)
 	{
-		if ((count / mult) < 1)
-		{
-			write_error((count / mult + '0'));
-		}
-		else
-			write_error((count / mult) % 10);
+		write_error((count / mult + '0'));
 		--len;
 		mult /= 10;
 	}
