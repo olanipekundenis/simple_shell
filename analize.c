@@ -22,9 +22,9 @@ void analyze(char *buf, int count, char **av)
 		++i;
 	}
 		args[i] = NULL;
-		if (_strncmp(EXXIT, args[0], 4) == 0)
+		if (_strcmp(EXXIT, args[0]) == 0)
 		{
-			exxit(args[1]);
+			exxit(buf, args, count, av);
 		}
 		else if (access(args[0], X_OK) == 0)
 		{

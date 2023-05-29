@@ -36,22 +36,26 @@ void execute(char *path, char **args)
 
 void error_message(char **args, int count, char **av)
 {
-	int temp, mult = 1, len = 1;
+	int temp, mult = 1, len = 0;
 
 	write(STDERR_FILENO, av[0], _strlen(av[0]));
 	write(STDERR_FILENO, ": ", 2);
 
 	temp = count;
 
-	while (temp >= 10)
+	while (temp > 9)
 	{
 		temp /= 10;
 		mult *= 10;
 		++len;
 	}
-	while (len > 1)
+	while (len > 0)
 	{
-		write_error((count / mult + '0'));
+		if ((count / mult) < 10)
+			write_error((count / mult + '0'));
+		else
+			write_error(((count / mult) % 10 + '0'));
+
 		--len;
 		mult /= 10;
 	}
@@ -71,4 +75,43 @@ void error_message(char **args, int count, char **av)
 int write_error(char error)
 {
 	return (write(STDERR_FILENO, &error, 1));
+}
+
+/**
+ * exit_errorMessage - This function handles errors from exit status
+ * @args: argument passed
+ * @count: number of cmd
+ * @av: argument vector
+ */
+
+void exit_errorMessage(char **args, int count, char **av)
+{
+	int temp, len = 0, mult = 1;
+
+	write(STDERR_FILENO, av[0], _strlen(av[0]));
+	write(STDERR_FILENO, ": ", 2);
+	temp = count;
+
+	while (temp > 9)
+	{
+		temp /= 10;
+		mult *= 10;
+		++len;
+	}
+		while (len > 0)
+		{
+			if ((count / mult) < 10)
+				write_error((count / mult + '0'));
+			else
+				write_error(((count / mult) % 10 + '0'));
+			--len;
+			mult /= 10;
+		}
+		write_error((count % 10 + '0'));
+		write(STDERR_FILENO, ": ", 2);
+		write(STDERR_FILENO, args[0], _strlen(args[0]));
+		write(STDERR_FILENO, ": ", 2);
+		write(STDERR_FILENO, "Illegal number: ", 16);
+		write(STDERR_FILENO, args[1], _strlen(args[1]));
+		_putchar('\n');
 }

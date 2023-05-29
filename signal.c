@@ -36,19 +36,31 @@ void removechar(char *str, char c)
 
 /**
  * exxit - function to track exit status
+ * @buf: buffer
  * @args: arguments passed
+ * @count: count cmd
+ * @av: argument vector
  */
 
-void exxit(char *args)
+void exxit(char *buf, char **args, int count, char **av)
 {
 	int status;
 
-	if (args == 0)
+	if (args[1] == 0)
+	{
+		free(buf);
 		exit(EXIT_SUCCESS);
+	}
 	else
 	{
-		status = _atoi(args);
-		exit(status);
+		status = _atoi(args[1]);
+		if (_isdigit(status) == 1)
+		{
+			free(buf);
+			exit(status);
+		}
+		else
+		exit_errorMessage(args, count, av);
 	}
 }
 
@@ -85,3 +97,5 @@ int _atoi(char *s)
 		result *= convert;
 		return (result);
 }
+
+
